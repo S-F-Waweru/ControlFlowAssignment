@@ -30,15 +30,23 @@ const Scissors = "Scissors"
 const Paper = "Paper"
 const Rock = "Rock"
 
+let cheatMode = false;
+
 
 let choices = [Rock, Paper,Scissors ];
 
 function game() {
-    console.log("Game  has Begun");
+    console.log(`
+    Game has Begun
+    -----------------------------------------`);
     let humanChoice =  humanPlay()
     let computerChoice = computerPlay(choices);
-    console.log(`you choose: ${humanChoice}`)
-    console.log(`the computer chooses: ${computerChoice}`)
+    console.log(`You choose: ${humanChoice}
+    
+    `)
+    console.log(`the computer chooses: ${computerChoice}
+    
+    `)
     rules(humanChoice, computerChoice);
     
 }
@@ -46,48 +54,104 @@ function game() {
 const rules = (humanChoice, computerChoice) => {
     if(humanChoice === computerChoice){
         console.log("Its a tie")
+        console.log(`The Scores:
+        Computer : ${compterScores}
+        You : ${humanScores}
+
+    `)
+    game()
+    
 
     }else if(
         ((humanChoice === Scissors) && (computerChoice === Rock)) ||
         ((humanChoice === Rock) && (computerChoice === Paper)) ||
         ((humanChoice === Paper) && (computerChoice === Scissors))) {
 
+        compterScores++    
         console.log("Computer wins");
+        console.log(`The Scores:
+        Computer : ${compterScores}
+        You : ${humanScores}
+        `)
+        game()
     } else{
+        humanScores++
         console.log("You win")
+        console.log(`The Scores:
+            Computer : ${compterScores}
+            You : ${humanScores}
+        `)
+        game()
     }
 };
 
 const computerPlay = (array) => {
-    let probability =  Math.random()
-    if(probability <=0.33){
-        console.log()
-        let computerChoice = array[0];
+    if(cheatMode){
+        // /return scissors only
+        let computerChoice = array[0]
         return computerChoice;
 
-    }else if( probability <= 0.66){
-        let computerChoice = array[1];
-        return computerChoice;
 
-    }else{
-        let computerChoice = array[2];
-        return computerChoice;
+        }else{
+            let probability =  Math.random()
+        if(probability <=0.33){
+            console.log()
+            let computerChoice = array[0]
+            return computerChoice;
+
+        }else if( probability <= 0.66){
+            let computerChoice = array[1]
+            return computerChoice;
+
+        }else{
+            let computerChoice = array[2]
+            return computerChoice
+
+        }
     }
    
 };
 
+// human play
 function humanPlay(){
-    let choice = prompt("Choose6 1-Rock 2-Paper 3-Scissors ");
+    let choice = prompt(
+    `ROCK PAPER SCISORS GAME : You begin,
+     Choose:
+        1-Rock 
+        2-Paper 
+        3-Scissors 
+        C - For Cheat Mode
+    
+    `);
     choice = choice.trim();
+    if (choice.toLowerCase() === "c"){
+        cheatMode = !cheatMode
+        if (cheatMode){
+            console.log(`Cheat Moode activated`)
+            game()
+        }else{
+            console.log(`Cheat Mode Deactivated`)
+            game()
+        }
+    }
     choice = +choice;
     if (choice === 1 || choice === 2 || choice === 3) {
         let humanChoice = choices[choice - 1]; 
         return humanChoice
     } else {
-        console.log("Choose a number  between 1- 3)");
+        console.log("Choose a number  between 1- 3)")
         game()
     }
 }
 
+//Scores
+let humanScores = 0
+let compterScores = 0
 
+
+//cheat mode
+// toggle cheatmode
+
+
+//play game
 game();
