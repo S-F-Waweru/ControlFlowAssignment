@@ -27,6 +27,47 @@ Come up with one specific implementation of cheat mode (e.g., computer always ch
 */
 
 
-// prompt the user
-let name1 = prompt("whats your name?")
-console.log(name1)
+let choices = ["Rock", "Paper", "Scissors"];
+
+function game() {
+    console.log("Game Beginning");
+    let choice = prompt("Choose 1-Rock 2-Paper 3-Scissors ");
+    choice = choice.trim();
+    choice = +choice;
+    if (choice === 1 || choice === 2 || choice === 3) {
+        let humanChoice = choices[choice - 1]; 
+        let computerChoice = computerPlay(choices);
+        console.log(`you choose: ${humanChoice}`)
+        console.log(`the computer choose: ${computerChoice}`)
+        rules(humanChoice, computerChoice);
+    } else {
+        console.log("Choose a number (1, 2, 3)");
+        game()
+    }
+}
+
+const rules = (humanChoice, computerChoice) => {
+    if (
+        ((humanChoice === "Scissors") && (computerChoice === "Rock")) ||
+        ((humanChoice === "Rock") && (computerChoice === "Paper")) ||
+        ((humanChoice === "Paper") && (computerChoice === "Scissors"))
+    ) {
+        console.log("Computer wins");
+    } else if (
+        ((computerChoice === "Scissors") && (humanChoice === "Rock")) ||
+        ((computerChoice === "Rock") && (humanChoice === "Paper")) ||
+        ((computerChoice === "Paper") && (humanChoice === "Scissors"))
+    ) {
+        console.log("You win!");
+    } else {
+        console.log("It is a tie!");
+    }
+};
+
+const computerPlay = (array) => {
+    let index = Math.floor(Math.random() * array.length);
+    let computerChoice = array[index];
+    return computerChoice;
+};
+
+game();
