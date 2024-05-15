@@ -7,7 +7,7 @@ If the input string is empty, return zero.
 
 */
 
-let numbers = "1, 2, 3,4, 7, k, 7, 8, 9, 10"
+let numbers = "1, 2, 3,4, 7, , k, 7, 8, 9, 10"
 
 function sum(input){
     // change to array
