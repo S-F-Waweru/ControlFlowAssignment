@@ -7,18 +7,30 @@ If the input string is empty, return zero.
 
 */
 
-let numbers = " 1, 2, 4, 5, 6, 7, 8, 9, 10"
+let numbers = "1, 2, 3,4, 7, k, 7, 8, 9, 10"
 
 function sum(input){
-    //split to array
-    // console.log(input.split(','))
-    // see the array
-    for(let i of input.split()){
-        console.log(i + 2)
+    // change to array
+    let array = input.split(",")
+    console.log(array)
+    let numberArray = []
+    for (let i of array){
+        i = +i
+        if (isNaN(i)){
+            i = 0
+        }
 
+        numberArray.push(i)
     }
-    // check for non numeric characters
-    //
-}
+    console.log(numberArray)
+    // add  the array to return sum 
+    let total = numberArray.reduce((acc, curr)=>acc+curr, 0)
+    console.log(total)
+    // return total
+    
+    }
+   
+ 
+
 
 sum(numbers)

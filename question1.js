@@ -25,3 +25,6 @@ Design a "cheat mode" feature that alters the computer's choice in some way (opt
 Come up with one specific implementation of cheat mode (e.g., computer always chooses scissors).
 
 */
+
+
+// prompt the user
