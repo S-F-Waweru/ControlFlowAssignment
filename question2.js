@@ -11,8 +11,12 @@ let numbers = " 1, 2, 4, 5, 6, 7, 8, 9, 10"
 
 function sum(input){
     //split to array
-    console.log(input.split())
+    // console.log(input.split(','))
     // see the array
+    for(let i of input.split()){
+        console.log(i + 2)
+
+    }
     // check for non numeric characters
     //
 }
