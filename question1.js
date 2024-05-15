@@ -28,5 +28,5 @@ Come up with one specific implementation of cheat mode (e.g., computer always ch
 
 
 // prompt the user
-let name1 = prompt("what is your name?");
+let name1 = prompt("whats your name?")
 console.log(name1)
