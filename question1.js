@@ -30,34 +30,30 @@ Come up with one specific implementation of cheat mode (e.g., computer always ch
 let choices = ["Rock", "Paper", "Scissors"];
 
 function game() {
-    console.log("Game Beginning");
-    let choice = prompt("Choose 1-Rock 2-Paper 3-Scissors ");
+    console.log("Game  has Begun");
+    let choice = prompt("Choose \n 1-Rock 2-Paper 3-Scissors ");
     choice = choice.trim();
     choice = +choice;
     if (choice === 1 || choice === 2 || choice === 3) {
         let humanChoice = choices[choice - 1]; 
         let computerChoice = computerPlay(choices);
         console.log(`you choose: ${humanChoice}`)
-        console.log(`the computer choose: ${computerChoice}`)
+        console.log(`the computer chooses: ${computerChoice}`)
         rules(humanChoice, computerChoice);
     } else {
-        console.log("Choose a number (1, 2, 3)");
+        console.log("Choose a number  between 1- 3)");
         game()
     }
 }
 
 const rules = (humanChoice, computerChoice) => {
-    if (
-        ((humanChoice === "Scissors") && (computerChoice === "Rock")) ||
+    if (((humanChoice === "Scissors") && (computerChoice === "Rock")) ||
         ((humanChoice === "Rock") && (computerChoice === "Paper")) ||
-        ((humanChoice === "Paper") && (computerChoice === "Scissors"))
-    ) {
+        ((humanChoice === "Paper") && (computerChoice === "Scissors"))) {
         console.log("Computer wins");
-    } else if (
-        ((computerChoice === "Scissors") && (humanChoice === "Rock")) ||
+    } else if (((computerChoice === "Scissors") && (humanChoice === "Rock")) ||
         ((computerChoice === "Rock") && (humanChoice === "Paper")) ||
-        ((computerChoice === "Paper") && (humanChoice === "Scissors"))
-    ) {
+        ((computerChoice === "Paper") && (humanChoice === "Scissors"))) {
         console.log("You win!");
     } else {
         console.log("It is a tie!");
